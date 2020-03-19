@@ -7,6 +7,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
+
 <!-- At a minimum, this file must have 4 components: 
     2 input fields (an input for the regular expression, 
     a textarea for the string to be matched), 
@@ -19,6 +20,10 @@ You should embed any styles
 <div style="text-align: center;">
     <br>
     <br>
+    <div id="error" class="d-none alert alert-danger" role="alert">
+      Please fill in the fields :(
+    </div>
+
     <div class="input-group justify-content-center">
         <div class="input-group-prepend">
           <span class="input-group-text">Type regex here!</span>
@@ -31,10 +36,13 @@ You should embed any styles
         <div class="input-group-prepend">
           <span class="input-group-text">Type a sentence here!</span>
         </div>
-        <textarea id="sentence" class="form-control" aria-label="With textarea" cols="5" rows="5"></textarea>
+        <textarea id="sentence" class="form-control"  cols="5" rows="5"></textarea>
     </div>
     <br>
-    <button  class="btn btn-primary" id="button">Parse</button>
+    <button class="btn btn-primary" id="button">Parse</button>
+    <br>
     <br>
     <p id="regoutput"></p>
 </div>
+
+<script src="regex.js"></script>

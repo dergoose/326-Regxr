@@ -8,13 +8,30 @@
 //  the innerHTML content of the output section to display the text.
 let regex = document.getElementById("reginput");
 let text = document.getElementById("sentence");
-let regout = document.getElementById("regout");
+let regout = document.getElementById("regoutput");
+let error = document.getElementById("error");
 let button = document.getElementById("button").addEventListener("click", highlight);
 
-
 function highlight(){
+    regout.innerHTML = "";
+    if(regex.value.length < 1){
+        error.classList.remove("d-none");
+        return;
+    }
+    else{
+     error.classList.add("d-none");   
+    }
+    
     let reg = RegExp(regex.value, 'g');
-    let out = (text.value).matchAll(reg);
-    regout.value = out;
-    console.log("yeet");
+
+    let out = Array.from((text.value).matchAll(reg)).toString();
+    let p = document.createElement("p");
+    for (let i = 0; i < text.value.length; i++){
+        let span = document.createElement('span');
+        span.innerHTML = text.value[i];
+        if (out.includes(text.value[i])){
+            span.style.backgroundColor = "#FFFF00";
+        }
+        regout.appendChild(span);
+    }
 }
